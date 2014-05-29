@@ -170,3 +170,17 @@
   - "restart edxapp_workers"
   environment: "{{ edxapp_environment }}"
 
+# Install NLTK (used by ORA2 AI)
+- name: download and install nltk
+  shell: |
+      set -e
+      curl -o {{ edxapp_nltk_tmp_file }} {{ edxapp_nltk_download_url }}
+      tar zxf {{ edxapp_nltk_tmp_file }}
+      rm -f {{ edxapp_nltk_tmp_file }}
+      touch {{ edxapp_nltk_download_url|basename }}-installed
+        creates={{ edxapp_data_dir }}/{{ edxapp_nltk_download_url|basename }}-installed
+        chdir={{ edxapp_data_dir }}
+  sudo_user: "{{ edxapp_user }}"
+  notify:
+    - "restart edxapp"
+    - "restart edxapp_workers"

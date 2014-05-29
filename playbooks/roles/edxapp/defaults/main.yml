@@ -609,3 +609,8 @@ edxapp_cms_variant: cms
 
 # Worker Settings
 worker_django_settings_module: 'aws'
+
+# NLTK (used by ORA2 AI)
+edxapp_nltk_data_dir: "{{ edxapp_data_dir}}/nltk_data"
+edxapp_nltk_download_url: http://edx-static.s3.amazonaws.com/nltk/nltk-data-20131113.tar.gz
+edxapp_nltk_tmp_file: "{{ edxapp_data_dir }}/nltk.tmp.tar.tz"
