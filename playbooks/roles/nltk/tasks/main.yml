@@ -1,0 +1,13 @@
+---
+
+- name: download and install nltk corpus
+  shell: |
+      set -e
+      mkdir -p {{ nltk_data_dir }}
+      curl -o {{ nltk_tmp_file }} {{ nltk_download_url }}
+      tar zxf {{ nltk_tmp_file }}
+      rm -f {{ nltk_tmp_file }}
+      touch {{ nltk_download_url|basename }}-installed
+      chmod 6400 -R {{ nltk_data_dir }}
+        creates={{ nltk_data_dir }}/{{ nltk_download_url|basename }}-installed
+        chdir={{ nltk_data_dir }}

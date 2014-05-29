@@ -1,0 +1,4 @@
+---
+nltk_data_dir: "/usr/share/"
+nltk_tmp_file: "/tmp/nltk.tmp.tar.tz"
+nltk_download_url: "http://edx-static.s3.amazonaws.com/nltk/nltk-data-20131113.tar.gz"
